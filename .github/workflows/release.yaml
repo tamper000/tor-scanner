@@ -29,6 +29,7 @@ jobs:
           GOOS=windows GOARCH=amd64 go build -o tor-scanner-windows-amd64.exe cmd/main.go
           GOOS=darwin GOARCH=amd64 go build -o tor-scanner-darwin-amd64 cmd/main.go
           GOOS=linux GOARCH=arm64 go build -o tor-scanner-linux-arm64 cmd/main.go
+          GOOS=android GOARCH=arm64 go build -o tor-scanner-android-arm64 cmd/main.go
 
       - name: GH Release
         uses: softprops/action-gh-release@v2.4.2
