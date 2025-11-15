@@ -2,7 +2,6 @@ package checker
 
 import (
 	"context"
-	"fmt"
 	"net"
 	"slices"
 	"strings"
@@ -29,7 +28,6 @@ func Check(ctx context.Context, alive chan Relays, relays []Relays, timeout time
 			address := splittedAddr[0] + ":" + splittedAddr[1]
 			conn, err := dialer.Dial("tcp", address)
 			if err == nil {
-				fmt.Println(relay.Country)
 				alive <- relay
 				conn.Close()
 			}

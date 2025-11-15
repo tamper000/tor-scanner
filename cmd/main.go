@@ -25,7 +25,7 @@ var (
 )
 
 func main() {
-	cli := clir.NewCli("Tor-scanner", "Easily Find Working Bridges for Tor", "v0.0.1")
+	cli := clir.NewCli("Tor-scanner", "Easily Find Working Bridges for Tor", "v0.0.2")
 
 	cli.IntFlag("count", "How many relays are needed", &count)
 	cli.IntFlag("threads", "How many threads are needed", &threads)
