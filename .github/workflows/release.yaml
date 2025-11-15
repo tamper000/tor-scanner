@@ -44,3 +44,5 @@ jobs:
             tor-scanner-windows-amd64.exe
             tor-scanner-darwin-amd64
             tor-scanner-linux-arm64
+            tor-scanner-android-arm64
+  
