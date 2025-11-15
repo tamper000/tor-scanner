@@ -1,0 +1,45 @@
+name: Release Tor-scanner
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.4'
+
+      - name: Get tag name
+        id: tag
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Build binaries
+        run: |
+          GOOS=linux GOARCH=amd64 go build -o tor-scanner-linux-amd64 cmd/main.go
+          GOOS=windows GOARCH=amd64 go build -o tor-scanner-windows-amd64.exe cmd/main.go
+          GOOS=darwin GOARCH=amd64 go build -o tor-scanner-darwin-amd64 cmd/main.go
+          GOOS=linux GOARCH=arm64 go build -o tor-scanner-linux-arm64 cmd/main.go
+
+      - name: GH Release
+        uses: softprops/action-gh-release@v2.4.2
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          name: Release ${{ env.TAG_NAME }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            tor-scanner-linux-amd64
+            tor-scanner-windows-amd64.exe
+            tor-scanner-darwin-amd64
+            tor-scanner-linux-arm64
