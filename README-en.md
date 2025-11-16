@@ -67,3 +67,5 @@ go build -o tor-scanner cmd/main.go
 ```
 
 Done! Now you can run `./tor-scanner`.
+
+[🐳 Using Docker](docker/howto-en.md)
