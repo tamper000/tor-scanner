@@ -39,6 +39,7 @@ jobs:
           draft: false
           prerelease: false
           generate_release_notes: true
+          make_latest: true
           files: |
             tor-scanner-linux-amd64
             tor-scanner-windows-amd64.exe
