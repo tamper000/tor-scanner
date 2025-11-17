@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/leaanthony/clir"
@@ -25,7 +26,7 @@ var (
 )
 
 func main() {
-	cli := clir.NewCli("Tor-scanner", "Easily Find Working Bridges for Tor", "v0.0.2")
+	cli := clir.NewCli("Tor-scanner", "Easily Find Working Bridges for Tor", "v0.0.3")
 
 	cli.IntFlag("count", "How many relays are needed", &count)
 	cli.IntFlag("threads", "How many threads are needed", &threads)
@@ -64,7 +65,7 @@ func start() error {
 	for len(list) < count {
 		addr := <-alive
 		list = append(list, addr)
-		fmt.Println(aurora.Green("Found"), aurora.Cyan(addr.OrAddresses[0]))
+		fmt.Println(aurora.Green("Found"), aurora.Cyan(addr.OrAddresses[0]), aurora.Blue("- "+strings.Title(addr.Country)))
 	}
 	cancel()
 	close(alive)
