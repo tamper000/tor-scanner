@@ -23,7 +23,7 @@ func GetRelays(input string) ([]Relays, error) {
 	var data []byte
 	if strings.HasPrefix(input, "https://") {
 		client := &http.Client{
-			Timeout: time.Second * 5,
+			Timeout: time.Second * 15,
 		}
 
 		resp, err := client.Get(input)
