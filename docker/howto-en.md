@@ -19,6 +19,12 @@ docker build -t tor-scanner -f docker/Dockerfile .
 docker run -p 9050:9050 --rm -d --name tor-node tor-scanner
 ```
 
+You can also pass parameters
+
+```bash
+docker run -p 9050:9050 --rm -d --name tor-node tor-scanner -count 3 -ping 100 -country us
+```
+
 Once running, Tor will be available as a SOCKS5 proxy at `localhost:9050`.
 
 ### ✅ Verify the proxy is working:

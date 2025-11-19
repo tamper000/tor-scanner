@@ -35,3 +35,4 @@ WORKDIR /home/tor
 EXPOSE 9050
 
 ENTRYPOINT ["/entrypoint.sh"]
+CMD []
