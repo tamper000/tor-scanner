@@ -68,7 +68,7 @@ func start() error {
 		fmt.Println(aurora.Green("Found"), aurora.Cyan(addr.OrAddresses[0]), aurora.Blue("- "+strings.Title(addr.Country)))
 	}
 	cancel()
-	close(alive)
+	defer close(alive)
 
 	fmt.Println("\n\nYour relays:")
 
