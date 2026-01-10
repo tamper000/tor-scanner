@@ -25,8 +25,13 @@ func Check(ctx context.Context, alive chan Relays, relays []Relays, timeout time
 			}
 			conn, err := dialer.Dial("tcp", relay.OrAddresses[0])
 			if err == nil {
-				alive <- relay
 				conn.Close()
+
+				select {
+				case alive <- relay:
+				case <-ctx.Done():
+					return
+				}
 			}
 		}
 	}
