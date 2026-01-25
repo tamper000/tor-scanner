@@ -7,6 +7,8 @@ Suitable for users living in censored regions who need reliable bridges to conne
 
 ---
 
+![Demo](.github/demo.gif)
+
 ## 🚀 How to Use
 
 Run the application with the desired parameters:
