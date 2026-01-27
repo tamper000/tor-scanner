@@ -11,7 +11,7 @@ RUN go mod download \
     && CGO_ENABLED=0 go build -o tor-scanner ./cmd/main.go
 
 # Stage 2
-FROM alpine:3.22
+FROM alpine:3.23
 
 RUN apk add --no-cache \
     ca-certificates \
