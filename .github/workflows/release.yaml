@@ -32,7 +32,7 @@ jobs:
           GOOS=android GOARCH=arm64 go build -o tor-scanner-android-arm64 cmd/main.go
 
       - name: GH Release
-        uses: softprops/action-gh-release@v2.5.0
+        uses: softprops/action-gh-release@v3.0.0
         with:
           tag_name: ${{ env.TAG_NAME }}
           name: Release ${{ env.TAG_NAME }}
